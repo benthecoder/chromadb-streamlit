@@ -1,5 +1,6 @@
 import streamlit as st
 from chromadb_connection import ChromaDBConnection
+import pandas as pd
 
 # Default data
 documents = [
@@ -33,8 +34,14 @@ conn = st.experimental_connection(
 # Add the default documents
 conn.add_documents(documents=documents, metadatas=metadatas, ids=ids)
 
+# show document
+with st.expander("Show documents"):
+    st.json(documents)
+
 # Query section
 query_text = st.text_input("Enter your query")
+n_results = st.slider("Number of results", min_value=1, max_value=10, value=2)
+
 if query_text:
-    results = conn.query(query_texts=[query_text])
+    results = conn.query(query_texts=[query_text], n_results=n_results)
     st.json(results)
