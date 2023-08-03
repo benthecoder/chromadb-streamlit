@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "streamlit-hack"
+version = "0.1.0"
+description = ""
+authors = ["benthecoder <benthecoder07@gmail.com>"]
+readme = "README.md"
+packages = [{include = "chromadb_connection"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.25.0"
+chromadb = "^0.4.2"
+pytest = "^7.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
